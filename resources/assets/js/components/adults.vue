@@ -1,20 +1,10 @@
 <template>
   <div class="message-wrap">
     <header class="global-header">
-      <h1>なぜにゃん</h1>
+      <h1>幾田さえこ</h1>
     </header>
-    <div v-for="message in messages">
-      <div class="message" :class="{'message-sent': message.fromMe, 'message-received': ! message.fromMe}">
-        <span class="message-sender">
-          {{ message.sender }}
-        </span>
-
-        <div class="message-bubble">
-          <div class="message-content">
-            {{ message.content }}
-          </div>
-        </div>
-      </div>
+    <div>
+      こんにちは
     </div>
     <div class="input-area">
       <input @keydown.enter="sendMessage" v-model="newMessageContent">

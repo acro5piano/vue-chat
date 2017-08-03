@@ -1,5 +1,5 @@
 <template>
-  <messages></messages>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -8,7 +8,6 @@
   export default {
     components: {
       messages: require('./components/messages.vue')
-
     },
   }
 </script>
