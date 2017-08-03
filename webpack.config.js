@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   context: __dirname + '/resources/assets/js',
 
@@ -26,10 +28,11 @@ module.exports = {
   },
 
   resolve: {
-    alias: {
-      vue: 'vue/dist/vue.js',
-      '@': __dirname + './resources/assets/js',
-    }
+    modules: [
+      path.resolve('./node_modules'),
+      path.resolve('./resources/assets/sass'),
+      path.resolve('./resources/assets/js'),
+    ]
   },
 
   module: {
@@ -47,7 +50,7 @@ module.exports = {
         loader: 'vue-loader',
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         exclude: /node_modules/,
         use: [
           {
@@ -60,7 +63,7 @@ module.exports = {
             }
           },
           {
-            loader: 'postcss-loader'
+            loader: 'sass-loader'
           }
         ]
       },
