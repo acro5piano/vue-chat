@@ -1,15 +1,12 @@
 <template>
   <div>
-    <p>{{ serverTime }}</p>
-    <p>{{ random }}</p>
-    Messages:
-    <ul>
-      <li v-for="message in messages">
-        {{message}}
-      </li>
-    </ul>
-    <input @keydown.enter="sendMessage" v-model="text">
-    <button @click="sendMessage"></button>
+    <div v-for="message in messages">
+      <div class="message" :class="{'message-sent': message.fromMe, 'message-receive': ! message.fromMe}">
+        {{ message.content }}
+      </div>
+    </div>
+    <input @keydown.enter="sendMessage" v-model="newMessageContent">
+    <button @click="sendMessage">送信</button>
   </div>
 </template>
 
@@ -19,22 +16,39 @@
   export default {
     data () {
       return {
-        serverTime: '',
-        random: 0,
-        messages: [],
-        text: ''
+        // messages: [],
+        messages: [{
+          fromMe: false,
+          content: 'hello',
+        },{
+          fromMe: true,
+          content: 'hello',
+        }],
+        newMessageContent: ''
       }
     },
     mounted () {
-      const socket = io();
-      socket.on('time', time => this.serverTime = time )
-      socket.on('random', random => this.random = random )
-      socket.on('message', message => this.messages.push(message))
+      this.$socket.on('message:receive', message => {
+        this.messages.push({
+          content: message.content,
+          fromMe: false,
+        })
+      })
     },
     methods: {
       sendMessage () {
-        axios.get('/send?text='+ this.text)
-      }
-    }
+        this.$socket.emit('message:send', this.newMessageContent)
+        this.messages.push({
+          content: this.newMessageContent,
+          fromMe: true,
+        })
+        this.newMessageContent = ''
+      },
+    },
   }
 </script>
+<style>
+.message-sent {
+  text-align: right;
+}
+</style>
