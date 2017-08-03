@@ -41,7 +41,9 @@ app.use(function(err, req, res, next) {
   res.render('error')
 })
 
-http.listen(3001, function(){
+const port = process.env.PORT || 3001
+
+http.listen(port, function(){
   console.log('listening on *:3001')
 })
 
