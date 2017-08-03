@@ -19,5 +19,11 @@ yarn install
 nodemon & yarn watch
 ```
 
+# Production
+
+```
+eb deploy
+```
+
 open http://localhost:3000/
 
