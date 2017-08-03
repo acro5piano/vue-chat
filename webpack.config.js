@@ -1,8 +1,8 @@
 module.exports = {
-  context: __dirname + '/app/assets',
+  context: __dirname + '/resources/assets/js',
 
   entry: {
-    javascript: './index.js',
+    javascript: './app.js',
   },
 
   output: {
@@ -28,7 +28,7 @@ module.exports = {
   resolve: {
     alias: {
       vue: 'vue/dist/vue.js',
-      '@': __dirname + './app/assets',
+      '@': __dirname + './resources/assets/js',
     }
   },
 

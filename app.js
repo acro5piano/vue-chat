@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 
 // view engine setup
-app.set('views', path.join(__dirname, 'app/views'))
+app.set('views', path.join(__dirname, 'resources/views'))
 app.set('view engine', 'pug')
 
 // uncomment after placing your favicon in /public
@@ -27,17 +27,28 @@ io.on('connection', function(socket){
   })
 })
 
-app.get('/send', function(req, res) {
-  io.emit('message', req.query.text)
-  res.send('message sent')
-})
+app.use('/', require('./routes/index.js'))
 
-module.exports = app;
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
-['./app/routes', './app/exceptions/handler'].forEach(file => {
-  require(file)(app)
-})
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 http.listen(3001, function(){
   console.log('listening on *:3001')
 })
+
+module.exports = app;

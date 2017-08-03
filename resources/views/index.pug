@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  #server-time
+  #random
+  #app
+
+
+  script(src="/socket.io/socket.io.js")
+
+  // script.
+
+  script(src="/bundle.js")
