@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "watch": "webpack-dev-server --hot"
+    "watch": "webpack-dev-server --hot",
+    "production": "NODE_ENV=production webpack --optimize-minimize"
   },
   "dependencies": {
     "axios": "^0.16.2",
