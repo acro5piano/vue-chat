@@ -1,3 +1,156 @@
+$brand-color-blue: #007099;
+$brand-color-light-blue:#3897BB;
+$message-color: #676767;
+
+$headerHeight: 60px;
+
+
+
+
+//--------------------------------------------------------------
+// Layout
+//--------------------------------------------------------------
+
+body{
+	font-size: 14px;
+	font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+}
+body > div{
+	padding: 0 10px;
+}
+
+
+
 .test {
   color: red;
+  display: none;
+}
+
+
+.message-wrap{
+	padding: $headerHeight+10px 0px 48px;
+}
+
+
+//--------------------------------------------------------------
+// Header
+//--------------------------------------------------------------
+
+header.global-header{
+	background: $brand-color-blue;
+	color: #fff;
+	height: $headerHeight;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	font-size: 17px;
+	z-index: 1;
+	h1{
+		text-align: center;
+		line-height: 1;
+		font-size: 14px;
+		font-weight: normal;
+		line-height: $headerHeight;
+		margin: 0;
+	}
+}
+
+
+
+
+//--------------------------------------------------------------
+// message
+//--------------------------------------------------------------
+
+
+
+.message{
+
+}
+.message-sent {
+  text-align: right;
+}
+.message-sender {
+  color: #aaa;
+  display: block;
+  font-size: 10px;
+  padding: 2px;
+  
+  
+}
+
+.message-bubble{
+	background: #f1f1f1;
+	border: none;
+	color: $message-color;
+
+  padding: 8px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+  display: inline-block;
+  text-align: left;
+}
+.message-sent{
+	.message-bubble{
+		background: $brand-color-light-blue;
+		color: #fff;
+		.message-sender{
+			color: #fff;
+			opacity: 0.8;
+			text-align: right;
+		}
+	}
+
+}
+
+
+
+//--------------------------------------------------------------
+// input
+//--------------------------------------------------------------
+
+
+
+.input-area{
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	display: flex;
+	border-top: 1px solid #f1f1f1;
+	align-items: center;
+	flex-flow: row wrap;
+	width: 100%;
+	padding: 0px 8px;
+	background: #FFF;
+	
+}
+
+input{
+	min-height:32px;
+	max-height:100px;
+	flex: 1;
+	padding: 0 16px;
+	box-shadow:none;
+	border:none;
+	transform: scale(0.99);
+	font-size: 16px;
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+button{
+	-webkit-border-radius: 100px;
+	        border-radius: 100px;
+	background: $brand-color-blue;
+	padding: 5px 20px;
+	border: none;
+	color: #fff;
+	height: 32px;
+	margin: 8px 0;
+	font-size: 14px;
 }
