@@ -32,7 +32,10 @@ module.exports = {
       path.resolve('./node_modules'),
       path.resolve('./resources/assets/sass'),
       path.resolve('./resources/assets/js'),
-    ]
+    ],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
   },
 
   module: {
